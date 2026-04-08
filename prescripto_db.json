@@ -1,0 +1,853 @@
+{
+    "users": {
+        "shano": {
+            "password_hash": "$pbkdf2-sha256$29000$3JtTSqlVqpXSurcWwnhPSQ$cqVNEvWwdBBJ5kPtTEwag4zhU41c4BtF7I8DL05WbL8",
+            "refresh_tokens": [
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NDYxNzYxOH0.p-8G5hP3HHDj4tXhpUZ_YJM9B-ez3O-6pTkxUoCBL1Q",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NDg0MjkwN30.0Z950dzDXxXBeajurI1ePFltx0COznmCrI647JJDvQk",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NTMxMjk0N30.UP364T-8R-IlnaZQYEE8NNddIheIvPyBFjyjjh0DKD0",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NjE0Mjk1MX0.WIoyGFtAsJySbCeEl1mZ5AMCJ7-nZVwYid4FIJj4Cns",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NjE0Mzg5N30.uRThPNVVYDydwixMqry7E8XV5LP6LQolYtZQbpNK7sU",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NjIyNjcwNX0._dBWY-M2Sbc5gusMWToNpgKmCyF5U-toTmFbwP3_q4g",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NjIyODMxMn0.uAf8AlRZT24cgjZFBQ68N-p1F2J-vd0j9dML9KIdyTM",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaGFubyIsImV4cCI6MTc3NjIzMjExNX0.Nqr6pggwaRrBU3cKF4v6WPravB2g-XWUfcv0fbMgrps"
+            ]
+        },
+        "david": {
+            "password_hash": "$pbkdf2-sha256$29000$UapVSonR.j.nlJJSqpXyfg$sVS6PaNgMGB3aHehDIQTq/tsVrylsdt7daEEvs16hx4",
+            "refresh_tokens": [
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXZpZCIsImV4cCI6MTc3NDYxNzY1NX0.ODnuBXhePiRx667kr-xinfnilPq2kb7NpbAHiTLEF18",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXZpZCIsImV4cCI6MTc3NTMxNTcxNH0.hsp0LxiVsZOqoZeZ_4nG_mLEhZP-DNazHWK7OIRrAJk",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXZpZCIsImV4cCI6MTc3NjE0Mzg2N30.-nAhOmatAR9MVXeI134sYYPoo9X2JOK8o77JhnAYU30",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXZpZCIsImV4cCI6MTc3NjIzMjM4M30.3OJsVa9il3C33JCz1hgLFnoeMIL0NZFZItD_1Q0Trt0"
+            ]
+        }
+    },
+    "reports": [
+        {
+            "id": "a0948d72-46ab-459a-9694-ea6bf62d9ece",
+            "city": "Chennai",
+            "symptoms": [
+                "fever"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-03-20T18:50:27.372070"
+        },
+        {
+            "id": "72bfa303-180c-4046-8ce5-4acaecd22cca",
+            "city": "Chennai",
+            "symptoms": [
+                "headache"
+            ],
+            "user_id": "david",
+            "timestamp": "2026-03-20T18:51:18.036321"
+        },
+        {
+            "id": "a856d393-f117-442c-8193-69129566361c",
+            "city": "Chennai",
+            "symptoms": [
+                "head ache"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-03-23T09:25:35.942874"
+        },
+        {
+            "id": "fd980173-7c2b-4842-96e0-cf0026350de6",
+            "city": "Chennai",
+            "symptoms": [
+                "fever"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-03-28T19:26:27.709753"
+        },
+        {
+            "id": "dde7bbce-4e0b-4bd0-a008-3ba4a48ac5dd",
+            "city": "Chennai",
+            "symptoms": [
+                "head ache"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-03-28T19:59:07.339920"
+        },
+        {
+            "id": "a96f240b-6826-42c6-a0de-3ee27fc77985",
+            "city": "Chennai",
+            "symptoms": [
+                "skin rash",
+                "body pain"
+            ],
+            "user_id": "david",
+            "timestamp": "2026-03-28T20:00:30.837590"
+        },
+        {
+            "id": "2153c511-6e2b-4065-aa7e-5bbe2f10e2c7",
+            "city": "Chennai",
+            "symptoms": [
+                "skin rash and chills"
+            ],
+            "user_id": "david",
+            "timestamp": "2026-03-28T20:45:14.846215"
+        },
+        {
+            "id": "a82f61a9-acf7-42db-8367-6c0b13fa8855",
+            "city": "Chennai",
+            "symptoms": [
+                "cold"
+            ],
+            "user_id": "david",
+            "timestamp": "2026-04-07T08:13:28.805165"
+        },
+        {
+            "id": "18e9d4d4-e5f8-4a05-83f4-ad660a7308cb",
+            "city": "Chennai",
+            "symptoms": [
+                "cold"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-04-07T08:14:18.488071"
+        },
+        {
+            "id": "f5591519-55ed-4d72-8b3b-e985ff89b6ef",
+            "city": "Chennai",
+            "symptoms": [
+                "fever"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-04-07T08:19:34.223769"
+        },
+        {
+            "id": "f0cdbd35-63f8-4213-ab5e-747221a9c4e3",
+            "city": "Chennai",
+            "symptoms": [
+                "body pain"
+            ],
+            "user_id": "david",
+            "timestamp": "2026-04-07T08:39:47.096312"
+        },
+        {
+            "id": "e53bc0c4-ab68-491d-bef5-f556caa9a907",
+            "city": "Chennai",
+            "symptoms": [
+                "headache"
+            ],
+            "user_id": "david",
+            "timestamp": "2026-04-07T10:47:47.322139"
+        },
+        {
+            "id": "4993f0ca-557b-4e5b-8adc-1a7aadc97aea",
+            "city": "Chennai",
+            "symptoms": [
+                "body pain"
+            ],
+            "user_id": "shano",
+            "timestamp": "2026-04-08T11:18:53.227438"
+        }
+    ],
+    "chat_history": {
+        "shano": [
+            {
+                "sender": "user",
+                "text": "Symptoms: headache",
+                "timestamp": "2026-03-23T09:27:48.287043"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-03-23T09:27:48.293523"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache",
+                "timestamp": "2026-03-23T09:28:01.223928"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-03-23T09:28:01.226497"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache",
+                "timestamp": "2026-03-23T09:28:36.009007"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-03-23T09:28:36.012852"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache",
+                "timestamp": "2026-03-23T09:29:37.201975"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-03-23T09:29:37.207354"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache",
+                "timestamp": "2026-03-23T09:29:55.050283"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-03-23T09:29:55.052867"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T19:24:16.728967"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T19:24:16.734545"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T19:24:41.873929"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T19:24:41.876964"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T19:25:01.618304"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T19:25:01.626223"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, cough",
+                "timestamp": "2026-03-28T19:25:24.192151"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Gastroenterologist",
+                "timestamp": "2026-03-28T19:25:24.196551"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, cough, chills",
+                "timestamp": "2026-03-28T19:25:49.950687"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Allergist",
+                "timestamp": "2026-03-28T19:25:49.954807"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T20:15:05.488920"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:15:05.505216"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T20:15:25.241001"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:15:25.245536"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T20:15:40.496543"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:15:40.504750"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T20:15:52.255812"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:15:52.257739"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T20:16:04.146356"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:16:04.154507"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache, fever",
+                "timestamp": "2026-04-08T10:17:33.191652"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-04-08T10:17:33.208168"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache, fever",
+                "timestamp": "2026-04-08T10:17:39.769189"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-04-08T10:17:39.780281"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache, fever",
+                "timestamp": "2026-04-08T10:17:52.317444"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-04-08T10:17:52.331236"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache, fever",
+                "timestamp": "2026-04-08T10:17:59.628534"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-04-08T10:17:59.643358"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: headache, fever",
+                "timestamp": "2026-04-08T10:18:07.304833"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Neurologist",
+                "timestamp": "2026-04-08T10:18:07.316983"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain",
+                "timestamp": "2026-04-08T11:19:47.060627"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:19:47.067692"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain",
+                "timestamp": "2026-04-08T11:20:20.040069"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:20:20.051418"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain",
+                "timestamp": "2026-04-08T11:20:30.714691"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:20:30.725217"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain, fatigue",
+                "timestamp": "2026-04-08T11:20:53.383803"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:20:53.394237"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain, fatigue, sore_throat",
+                "timestamp": "2026-04-08T11:21:04.099967"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:21:04.107469"
+            }
+        ],
+        "david": [
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T20:45:44.645238"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:45:44.654991"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, sore_throat",
+                "timestamp": "2026-03-28T20:46:12.816196"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T20:46:12.823907"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T21:10:02.510877"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T21:10:02.530590"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T21:10:19.547210"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T21:10:19.557284"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T21:10:48.867696"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T21:10:48.881447"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain",
+                "timestamp": "2026-03-28T21:11:09.758983"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T21:11:09.773431"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, body_pain, cough",
+                "timestamp": "2026-03-28T21:12:07.666686"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Gastroenterologist",
+                "timestamp": "2026-03-28T21:12:07.675202"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T21:28:11.825108"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T21:28:11.841846"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-03-28T21:29:16.185978"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-03-28T21:29:16.202795"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, fatigue",
+                "timestamp": "2026-03-28T21:29:29.617773"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Phlebologist",
+                "timestamp": "2026-03-28T21:29:29.626192"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, fatigue, sore_throat",
+                "timestamp": "2026-03-28T21:29:39.571786"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Phlebologist",
+                "timestamp": "2026-03-28T21:29:39.580074"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, fatigue, sore_throat, chills",
+                "timestamp": "2026-03-28T21:29:44.962295"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Allergist",
+                "timestamp": "2026-03-28T21:29:44.970056"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-04-07T10:58:07.144077"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-07T10:58:07.172855"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-04-07T10:58:18.338795"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-07T10:58:18.347032"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever",
+                "timestamp": "2026-04-07T10:58:26.084886"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-07T10:58:26.088860"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, cough",
+                "timestamp": "2026-04-07T10:58:40.662650"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Gastroenterologist",
+                "timestamp": "2026-04-07T10:58:40.667088"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: fever, cough, fatigue",
+                "timestamp": "2026-04-07T10:58:52.718609"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: Pulmonologist",
+                "timestamp": "2026-04-07T10:58:52.723878"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: cough, body_pain, fever",
+                "timestamp": "2026-04-08T11:48:18.416638"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:48:18.424034"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: cough, body_pain, fever, mucus",
+                "timestamp": "2026-04-08T11:48:49.562158"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:48:49.568632"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: cough, body_pain, fever, mucus",
+                "timestamp": "2026-04-08T11:48:58.179144"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:48:58.187449"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: cough, body_pain, fever, mucus",
+                "timestamp": "2026-04-08T11:49:08.080286"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:49:08.087673"
+            },
+            {
+                "sender": "user",
+                "text": "Symptoms: cough, body_pain, fever, mucus",
+                "timestamp": "2026-04-08T11:49:12.693506"
+            },
+            {
+                "sender": "ai",
+                "text": "Recommended: General Physician",
+                "timestamp": "2026-04-08T11:49:12.699816"
+            }
+        ]
+    },
+    "doctors": [
+        {
+            "id": "doc_1",
+            "name": "Dr. Aditi Sharma",
+            "specialty": "dermatologist",
+            "hospital": "Apollo Skin Clinic",
+            "rating": 4.9,
+            "fees": 800,
+            "location": "Chennai Central",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/44.jpg"
+        },
+        {
+            "id": "doc_2",
+            "name": "Dr. Raj Malhotra",
+            "specialty": "dermatologist",
+            "hospital": "General Hospital",
+            "rating": 4.5,
+            "fees": 500,
+            "location": "Adyar",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/32.jpg"
+        },
+        {
+            "id": "doc_3",
+            "name": "Dr. Arjun Verma",
+            "specialty": "cardiologist",
+            "hospital": "Heart Care Institute",
+            "rating": 5.0,
+            "fees": 1500,
+            "location": "Velachery",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/85.jpg"
+        },
+        {
+            "id": "doc_4",
+            "name": "Dr. Priya Singh",
+            "specialty": "cardiologist",
+            "hospital": "Fortis Malar",
+            "rating": 4.7,
+            "fees": 1200,
+            "location": "Mylapore",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/68.jpg"
+        },
+        {
+            "id": "doc_5",
+            "name": "Dr. Manoj Gupta",
+            "specialty": "general_physician",
+            "hospital": "Family Health",
+            "rating": 4.3,
+            "fees": 400,
+            "location": "T.Nagar",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/11.jpg"
+        },
+        {
+            "id": "doc_6",
+            "name": "Dr. Sneha Patil",
+            "specialty": "general_physician",
+            "hospital": "Kauvery Hospital",
+            "rating": 4.8,
+            "fees": 600,
+            "location": "Anna Nagar",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/90.jpg"
+        },
+        {
+            "id": "doc_7",
+            "name": "Dr. Vikram Seth",
+            "specialty": "neurologist",
+            "hospital": "Brain & Spine Center",
+            "rating": 4.9,
+            "fees": 2000,
+            "location": "OMR",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/55.jpg"
+        },
+        {
+            "id": "doc_8",
+            "name": "Dr. Meera Krishnan",
+            "specialty": "ent_specialist",
+            "hospital": "MGM Healthcare",
+            "rating": 4.6,
+            "fees": 900,
+            "location": "Aminjikarai",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/52.jpg"
+        },
+        {
+            "id": "doc_9",
+            "name": "Dr. Naveen Kumar",
+            "specialty": "orthopedic",
+            "hospital": "MIOT International",
+            "rating": 4.8,
+            "fees": 1400,
+            "location": "Manapakkam",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/61.jpg"
+        },
+        {
+            "id": "doc_10",
+            "name": "Dr. Lakshmi Narayanan",
+            "specialty": "pediatrician",
+            "hospital": "Rainbow Children's Hospital",
+            "rating": 4.7,
+            "fees": 950,
+            "location": "Guindy",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/63.jpg"
+        },
+        {
+            "id": "doc_11",
+            "name": "Dr. Harish Raman",
+            "specialty": "psychiatrist",
+            "hospital": "Mindwell Clinic",
+            "rating": 4.5,
+            "fees": 1300,
+            "location": "Nungambakkam",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/48.jpg"
+        },
+        {
+            "id": "doc_12",
+            "name": "Dr. Divya Subramaniam",
+            "specialty": "gynecologist",
+            "hospital": "Cloudnine Hospital",
+            "rating": 4.9,
+            "fees": 1200,
+            "location": "Teynampet",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/57.jpg"
+        },
+        {
+            "id": "doc_13",
+            "name": "Dr. Arun Prakash",
+            "specialty": "pulmonologist",
+            "hospital": "Apollo Hospitals",
+            "rating": 4.6,
+            "fees": 1500,
+            "location": "Greams Road",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/71.jpg"
+        },
+        {
+            "id": "doc_14",
+            "name": "Dr. Swetha Iyer",
+            "specialty": "gastroenterologist",
+            "hospital": "SIMS Hospital",
+            "rating": 4.7,
+            "fees": 1600,
+            "location": "Vadapalani",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/73.jpg"
+        },
+        {
+            "id": "doc_15",
+            "name": "Dr. Karthik Rajan",
+            "specialty": "ophthalmologist",
+            "hospital": "Dr. Agarwals Eye Hospital",
+            "rating": 4.4,
+            "fees": 850,
+            "location": "Ashok Nagar",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/66.jpg"
+        },
+        {
+            "id": "doc_16",
+            "name": "Dr. Ananya Bose",
+            "specialty": "endocrinologist",
+            "hospital": "Kauvery Hospital",
+            "rating": 4.8,
+            "fees": 1700,
+            "location": "Alwarpet",
+            "gender": "Female",
+            "image": "https://randomuser.me/api/portraits/women/81.jpg"
+        },
+        {
+            "id": "doc_17",
+            "name": "Dr. Ritesh Menon",
+            "specialty": "urologist",
+            "hospital": "Gleneagles HealthCity",
+            "rating": 4.5,
+            "fees": 1450,
+            "location": "Perumbakkam",
+            "gender": "Male",
+            "image": "https://randomuser.me/api/portraits/men/76.jpg"
+        }
+    ],
+    "groups": [
+        {
+            "id": "a51c2f82-f5b4-4c5e-835c-175a9cde64f7",
+            "name": "demo",
+            "disease_tag": "",
+            "created_by": "shano",
+            "members": [
+                "shano",
+                "david"
+            ]
+        }
+    ],
+    "group_messages": [
+        {
+            "id": "85314c1f-3ff0-43fa-9839-5a552dd1d52e",
+            "group_id": "a51c2f82-f5b4-4c5e-835c-175a9cde64f7",
+            "sender": "shano",
+            "message": "hi",
+            "timestamp": "2026-04-08T11:22:21.615829"
+        },
+        {
+            "id": "686930a5-eba3-424f-87fb-148a06fc4204",
+            "group_id": "a51c2f82-f5b4-4c5e-835c-175a9cde64f7",
+            "sender": "shano",
+            "message": "hello david",
+            "timestamp": "2026-04-08T11:23:52.255236"
+        },
+        {
+            "id": "f08a6bf2-f0ec-490c-9e69-51cbfb0661f5",
+            "group_id": "a51c2f82-f5b4-4c5e-835c-175a9cde64f7",
+            "sender": "david",
+            "message": "hi shano",
+            "timestamp": "2026-04-08T11:24:13.661086"
+        }
+    ],
+    "group_requests": [
+        {
+            "group_id": "a51c2f82-f5b4-4c5e-835c-175a9cde64f7",
+            "user_id": "david",
+            "status": "approved"
+        }
+    ]
+}

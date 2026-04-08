@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureConnect | AI Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+        :root {
+            --bg: #f4f9f8;
+            --bg-soft: #eef8f6;
+            --panel: rgba(255, 255, 255, 0.84);
+            --panel-strong: rgba(255, 255, 255, 0.96);
+            --border: rgba(18, 79, 99, 0.1);
+            --text: #112132;
+            --muted: #60748a;
+            --accent: #127c71;
+            --accent-deep: #0b5f57;
+            --secondary: #2563eb;
+            --health: #10b981;
+            --accent-warm: #5fa7ff;
+            --danger: #dc5d53;
+            --shadow: 0 24px 60px rgba(17, 33, 50, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(18, 124, 113, 0.14), transparent 28%),
+                radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 24%),
+                linear-gradient(180deg, #eff8f7 0%, #f7fbfd 100%);
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+            animation: fadeUp 0.35s ease;
+        }
+
+        .glass {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .glass-strong {
+            background: var(--panel-strong);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(22px);
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.04em;
+        }
+
+        .active-tab {
+            background: linear-gradient(135deg, var(--accent), #19a08d);
+            color: white !important;
+            box-shadow: 0 10px 24px rgba(18, 124, 113, 0.25);
+        }
+
+        .nav-pill {
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-1px);
+        }
+
+        .mesh-card {
+            background:
+                radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.12), transparent 30%),
+                radial-gradient(circle at 100% 100%, rgba(18, 124, 113, 0.18), transparent 28%),
+                rgba(255, 255, 255, 0.82);
+        }
+
+        .chat-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1.45fr 0.9fr;
+        }
+
+        .doctor-grid {
+            display: grid;
+            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .clinical-card {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 249, 247, 0.98));
+            border: 1px solid rgba(18, 124, 113, 0.08);
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+        }
+
+        .chart-shell {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(18, 124, 113, 0.08);
+            background:
+                radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent 28%),
+                linear-gradient(180deg, #fcfffe 0%, #f3fbf9 100%);
+        }
+
+        .chart-shell::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.03), transparent 36%);
+            pointer-events: none;
+        }
+
+        .news-panel {
+            height: 460px;
+            overflow-y: auto;
+            padding-right: 0.25rem;
+        }
+
+        .news-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .news-panel::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(18, 124, 113, 0.55), rgba(37, 99, 235, 0.45));
+            border-radius: 999px;
+        }
+
+        .news-sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            margin: -0.25rem -0.25rem 0;
+            padding: 0 0.25rem 0.85rem;
+            background: linear-gradient(180deg, rgba(244, 249, 248, 0.98), rgba(244, 249, 248, 0.88), transparent);
+            backdrop-filter: blur(6px);
+        }
+
+        .medical-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 999px;
+            background: rgba(18, 124, 113, 0.1);
+            color: var(--accent-deep);
+            padding: 0.45rem 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .medical-badge::before {
+            content: "";
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--health), var(--accent));
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.14);
+        }
+
+        .medical-input:focus {
+            border-color: rgba(18, 124, 113, 0.45);
+            box-shadow: 0 0 0 4px rgba(18, 124, 113, 0.1);
+        }
+
+        .medical-action {
+            background: linear-gradient(135deg, var(--accent), #18978a);
+            box-shadow: 0 14px 28px rgba(18, 124, 113, 0.18);
+        }
+
+        .secondary-action {
+            background: linear-gradient(135deg, var(--secondary), #4b83f5);
+            box-shadow: 0 14px 28px rgba(37, 99, 235, 0.16);
+        }
+
+        .doctor-card-image {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid rgba(18, 124, 113, 0.1);
+        }
+
+        .doctor-modal-shell {
+            background:
+                radial-gradient(circle at top left, rgba(52, 211, 153, 0.24), transparent 35%),
+                linear-gradient(145deg, rgba(8, 47, 73, 0.92), rgba(15, 118, 110, 0.86), rgba(30, 41, 59, 0.94));
+            box-shadow: 0 32px 80px rgba(15, 23, 42, 0.32);
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .soft-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .soft-scroll::-webkit-scrollbar-thumb {
+            background: rgba(99, 116, 136, 0.28);
+            border-radius: 999px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .chat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-panel {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="authScreen" class="fixed inset-0 z-50 flex items-center justify-center px-4 py-8">
+        <div class="absolute inset-0 bg-slate-950/20 backdrop-blur-sm"></div>
+        <div class="relative glass-strong w-full max-w-5xl overflow-hidden rounded-[32px]">
+            <div class="grid min-h-[680px] lg:grid-cols-[1.08fr_0.92fr]">
+                <div class="mesh-card relative hidden overflow-hidden px-10 py-12 text-white lg:flex lg:flex-col lg:justify-between">
+                    <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(11,95,87,0.96),rgba(18,124,113,0.86),rgba(240,139,98,0.78))]"></div>
+                    <div class="absolute -left-20 top-20 h-56 w-56 rounded-full bg-white/10 blur-2xl"></div>
+                    <div class="absolute bottom-10 right-10 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+                    <div class="relative">
+                        <div class="mb-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white/90">
+                            Smart care intelligence
+                        </div>
+                        <h1 class="section-title max-w-lg text-5xl font-bold leading-tight">
+                            CureConnect keeps your local care network visible.
+                        </h1>
+                        <p class="mt-6 max-w-md text-base leading-7 text-white/80">
+                            Track city health, screen symptoms, discover specialists, and stay connected with support groups in one place.
+                        </p>
+                    </div>
+                    <div class="relative grid gap-4 sm:grid-cols-3">
+                        <div class="rounded-3xl border border-white/15 bg-white/10 p-5">
+                            <div class="text-3xl font-bold">24h</div>
+                            <div class="mt-2 text-sm text-white/75">symptom pulse map</div>
+                        </div>
+                        <div class="rounded-3xl border border-white/15 bg-white/10 p-5">
+                            <div class="text-3xl font-bold">AI</div>
+                            <div class="mt-2 text-sm text-white/75">triage assistant</div>
+                        </div>
+                        <div class="rounded-3xl border border-white/15 bg-white/10 p-5">
+                            <div class="text-3xl font-bold">Care</div>
+                            <div class="mt-2 text-sm text-white/75">doctor matching</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center px-6 py-10 sm:px-10">
+                    <div class="mx-auto w-full max-w-md">
+                        <div class="mb-8">
+                            <p class="text-sm font-medium uppercase tracking-[0.28em] text-[var(--accent)]">Welcome back</p>
+                            <h2 class="section-title mt-3 text-4xl font-bold text-slate-900">Sign in to your health desk</h2>
+                            <p class="mt-3 text-sm leading-6 text-slate-500">
+                                Use your CureConnect account to open your dashboard, chat with the AI assistant, and monitor your community health view.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <label class="block">
+                                <span class="mb-2 block text-sm font-medium text-slate-600">Username</span>
+                                <input id="username" type="text" placeholder="Enter username" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-[var(--accent)] focus:ring-4 focus:ring-emerald-100">
+                            </label>
+
+                            <label class="block">
+                                <span class="mb-2 block text-sm font-medium text-slate-600">Password</span>
+                                <input id="password" type="password" placeholder="Enter password" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition focus:border-[var(--accent)] focus:ring-4 focus:ring-emerald-100">
+                            </label>
+                        </div>
+
+                        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                            <button onclick="App.handleLogin()" class="rounded-2xl bg-[linear-gradient(135deg,var(--accent),#19a08d)] px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-200 transition hover:-translate-y-0.5">
+                                Login
+                            </button>
+                            <button onclick="App.handleRegister()" class="rounded-2xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50">
+                                Register
+                            </button>
+                        </div>
+
+                        <div class="mt-8 rounded-3xl bg-[var(--bg-soft)] p-5 text-sm text-slate-600">
+                            <div class="font-semibold text-slate-900">What you can do here</div>
+                            <p class="mt-2 leading-6">
+                                Check city trends, report symptoms, talk to the AI assistant, discover doctors, and join support groups without leaving the app.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainApp" class="hidden px-4 pb-28 pt-4 sm:px-6 lg:px-8 lg:pb-10">
+        <div class="mx-auto max-w-7xl">
+            <div class="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+                <aside class="glass hidden rounded-[30px] p-6 lg:block">
+                    <div class="rounded-[28px] bg-[linear-gradient(160deg,#0f766e,#0b5f57)] p-6 text-white">
+                        <p class="text-xs uppercase tracking-[0.3em] text-white/65">CureConnect</p>
+                        <h1 class="section-title mt-4 text-3xl font-bold">Care command center</h1>
+                        <p class="mt-3 text-sm leading-6 text-white/75">
+                            Stay close to your city health signal and move quickly from symptoms to support.
+                        </p>
+                    </div>
+
+                    <nav class="mt-6 flex flex-col gap-2">
+                        <button id="tab-home" class="nav-pill active-tab flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold text-slate-700" onclick="switchTab('home')">
+                            <span>Home</span>
+                            <span class="text-xs opacity-75">01</span>
+                        </button>
+                        <button id="tab-chat" class="nav-pill flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold text-slate-700" onclick="switchTab('chat')">
+                            <span>Chat</span>
+                            <span class="text-xs opacity-50">02</span>
+                        </button>
+                        <button id="tab-doctors" class="nav-pill flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold text-slate-700" onclick="switchTab('doctors')">
+                            <span>Doctors</span>
+                            <span class="text-xs opacity-50">03</span>
+                        </button>
+                        <button id="tab-groups" class="nav-pill flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold text-slate-700" onclick="switchTab('groups')">
+                            <span>Groups</span>
+                            <span class="text-xs opacity-50">04</span>
+                        </button>
+                        <button id="tab-user" class="nav-pill flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold text-slate-700" onclick="switchTab('user')">
+                            <span>Profile</span>
+                            <span class="text-xs opacity-50">05</span>
+                        </button>
+                    </nav>
+
+                    <div class="mt-8 rounded-[26px] bg-white p-5 shadow-sm">
+                        <div class="text-xs uppercase tracking-[0.24em] text-slate-400">Monitoring city</div>
+                        <div class="mt-3 text-2xl font-semibold text-slate-900">Chennai</div>
+                        <p class="mt-2 text-sm leading-6 text-slate-500">Community reports and health alerts refresh from the dashboard feed.</p>
+                    </div>
+                </aside>
+
+                <main class="space-y-6">
+                    <header class="glass flex flex-col gap-4 rounded-[30px] px-5 py-5 sm:px-7 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Live dashboard</p>
+                            <h2 class="section-title mt-2 text-3xl font-bold text-slate-900">Good to see you, <span id="dispName">User</span></h2>
+                            <p class="mt-2 text-sm leading-6 text-slate-500">A cleaner view of alerts, symptom analysis, doctors, and community conversations.</p>
+                        </div>
+                        <div class="grid gap-3 sm:grid-cols-2 lg:w-[360px]">
+                            <div class="rounded-3xl bg-white px-5 py-4 shadow-sm">
+                                <div class="text-xs uppercase tracking-[0.22em] text-slate-400">Assistant</div>
+                                <div class="mt-2 text-lg font-semibold text-slate-900">AI triage ready</div>
+                            </div>
+                            <div class="rounded-3xl bg-[var(--bg-soft)] px-5 py-4 shadow-sm">
+                                <div class="text-xs uppercase tracking-[0.22em] text-slate-400">Mode</div>
+                                <div class="mt-2 text-lg font-semibold text-slate-900">Community watch</div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <section id="view-home" class="view-section active">
+                        <div class="grid gap-6 xl:grid-cols-[1.45fr_0.95fr]">
+                            <div class="glass rounded-[30px] p-5 sm:p-6">
+                                <div class="flex flex-col gap-6">
+                                    <div class="grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
+                                        <div class="clinical-card rounded-[28px] p-6">
+                                            <div class="medical-badge">Live Vital Watch</div>
+                                            <p class="mt-4 text-xs uppercase tracking-[0.28em] text-slate-400">City health score</p>
+                                            <div id="healthScore" class="section-title mt-5 text-6xl font-bold text-[var(--accent)]">--</div>
+                                            <p id="healthStatus" class="mt-3 text-sm leading-6 text-slate-500">Loading city health pulse...</p>
+                                        </div>
+                                        <div class="chart-shell rounded-[28px] p-5 sm:p-6">
+                                            <div class="mb-4 flex items-center justify-between">
+                                                <div>
+                                                    <p class="text-xs uppercase tracking-[0.24em] text-slate-400">24-hour signal</p>
+                                                    <h3 class="section-title mt-1 text-2xl font-bold text-slate-900">Symptom trend graph</h3>
+                                                    <p class="mt-2 max-w-xl text-sm leading-6 text-slate-500">Track hourly symptom volume with a clearer clinical view designed for quick dashboard scanning.</p>
+                                                </div>
+                                            </div>
+                                            <div class="h-[440px] sm:h-[460px] xl:h-[480px]">
+                                                <canvas id="symptomTrendChart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clinical-card rounded-[28px] p-5">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Risk snapshot</p>
+                                                <h4 class="section-title mt-1 text-2xl font-bold text-slate-900">Top disease signals</h4>
+                                            </div>
+                                        </div>
+                                        <ul id="diseaseList" class="mt-5 space-y-3 text-sm"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div class="glass rounded-[30px] p-5 sm:p-6">
+                                    <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Community action</p>
+                                    <h3 class="section-title mt-2 text-2xl font-bold text-slate-900">Report symptoms nearby</h3>
+                                    <p class="mt-3 text-sm leading-6 text-slate-500">Share fresh symptom reports to improve the city risk map for everyone around you.</p>
+                                    <input id="communitySymptoms" type="text" placeholder="Enter symptoms only (e.g., fever, cough)" class="medical-input mt-5 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 outline-none transition">
+                                    <p id="communityHint" class="mt-3 text-xs leading-5 text-slate-400">Avoid app names or unrelated words. Separate symptoms with commas.</p>
+                                    <div id="communityWarning" class="mt-2 hidden rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700"></div>
+                                    <button onclick="App.submitReport(document.getElementById('communitySymptoms').value.split(','))" class="secondary-action mt-4 w-full rounded-2xl px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5">
+                                        Submit Community Report
+                                    </button>
+                                </div>
+
+                                <div class="glass rounded-[30px] p-5 sm:p-6">
+                                    <div class="news-panel soft-scroll">
+                                        <div class="news-sticky-header">
+                                            <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Medical bulletin</p>
+                                            <h3 class="section-title mt-2 text-2xl font-bold text-slate-900">Health news</h3>
+                                            <p id="newsDebug" class="mt-2 text-xs leading-5 text-slate-400">Waiting to load global health headlines...</p>
+                                        </div>
+                                        <div id="newsFeed" class="mt-2 space-y-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="view-chat" class="view-section">
+                        <div class="chat-grid">
+                            <div class="glass rounded-[30px] p-5 sm:p-6">
+                                <div class="flex items-center justify-between gap-4">
+                                    <div>
+                                        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">AI symptom assistant</p>
+                                        <h3 class="section-title mt-1 text-2xl font-bold text-slate-900">Describe what you feel</h3>
+                                    </div>
+                                    <div class="rounded-full bg-[var(--bg-soft)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-deep)]">
+                                        Live analysis
+                                    </div>
+                                </div>
+
+                                <div id="chatWindow" class="soft-scroll mt-5 h-[420px] overflow-y-auto rounded-[28px] bg-white p-4 shadow-inner sm:p-5">
+                                    <div class="rounded-2xl bg-[var(--bg-soft)] p-4 text-sm leading-6 text-slate-500">
+                                        Describe symptoms like: <span class="font-semibold text-slate-700">itching, skin_rash</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 flex flex-col gap-3">
+                                    <div class="flex gap-2">
+                                        <input id="chatInput" type="text" class="medical-input flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 outline-none transition" placeholder="Enter symptoms..." onkeydown="if(event.key==='Enter'){ event.preventDefault(); App.handleChatSubmit(); }">
+                                        <button onclick="App.handleChatSubmit()" class="medical-action rounded-2xl px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5">
+                                            Send
+                                        </button>
+                                    </div>
+                                    <div id="voiceControls" class="flex flex-wrap gap-3">
+                                        <div id="voiceControlButtons" class="flex flex-wrap gap-3">
+                                            <button id="voiceEnableBtn" onclick="App.enableVoiceMode()" class="rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold text-[var(--accent-deep)] transition hover:border-emerald-200 hover:bg-emerald-50">
+                                                Start Voice Mode
+                                            </button>
+                                        </div>
+                                        <button onclick="App.resetConversation()" class="rounded-2xl bg-[var(--bg-soft)] px-4 py-3 text-sm font-semibold text-[var(--danger)] transition hover:bg-rose-50">
+                                            Reset Conversation
+                                        </button>
+                                    </div>
+                                    <div id="voiceStatus" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-500">
+                                        Voice mode is off. Tap Start Voice Mode to begin.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div class="glass rounded-[30px] p-5 sm:p-6">
+                                    <p class="text-xs uppercase tracking-[0.24em] text-slate-400">How it works</p>
+                                    <h3 class="section-title mt-2 text-2xl font-bold text-slate-900">Triage in three steps</h3>
+                                    <div class="mt-5 space-y-4">
+                                        <div class="rounded-3xl bg-white p-4 shadow-sm">
+                                            <div class="text-sm font-semibold text-slate-900">1. Share symptoms</div>
+                                            <p class="mt-1 text-sm leading-6 text-slate-500">Type naturally or use voice to send your current symptoms.</p>
+                                        </div>
+                                        <div class="rounded-3xl bg-white p-4 shadow-sm">
+                                            <div class="text-sm font-semibold text-slate-900">2. Review analysis</div>
+                                            <p class="mt-1 text-sm leading-6 text-slate-500">The assistant can ask follow-up questions and suggest the right specialist.</p>
+                                        </div>
+                                        <div class="rounded-3xl bg-white p-4 shadow-sm">
+                                            <div class="text-sm font-semibold text-slate-900">3. Find doctors</div>
+                                            <p class="mt-1 text-sm leading-6 text-slate-500">Recommended doctors appear in the chat so you can switch straight to care options.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass rounded-[30px] p-5 sm:p-6">
+                                    <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Voice mode</p>
+                                    <h3 class="section-title mt-2 text-2xl font-bold text-slate-900">Hands-free symptom capture</h3>
+                                    <p class="mt-3 text-sm leading-6 text-slate-500">Capture exactly five seconds, transcribe immediately, and send symptoms without typing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="view-doctors" class="view-section">
+                        <div class="glass rounded-[30px] p-5 sm:p-6">
+                            <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                                <div>
+                                    <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Care directory</p>
+                                    <h3 class="section-title mt-1 text-3xl font-bold text-slate-900">Doctors near your recommended specialty</h3>
+                                </div>
+                                <p class="max-w-md text-sm leading-6 text-slate-500">Browse available specialists, locations, fees, and ratings surfaced by CureConnect.</p>
+                            </div>
+                            <div id="doctorGrid" class="doctor-grid mt-6"></div>
+                        </div>
+                    </section>
+
+                    <section id="view-groups" class="view-section">
+                        <div class="grid gap-6 xl:grid-cols-[0.92fr_1.08fr]">
+                            <div class="glass rounded-[30px] p-5 sm:p-6">
+                                <div class="flex items-center justify-between gap-4">
+                                    <div>
+                                        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Support circles</p>
+                                        <h3 class="section-title mt-1 text-3xl font-bold text-slate-900">Groups</h3>
+                                    </div>
+                                    <button onclick="App.showCreateGroupForm()" class="rounded-2xl bg-[linear-gradient(135deg,var(--accent),#19a08d)] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-200 transition hover:-translate-y-0.5">
+                                        + Create
+                                    </button>
+                                </div>
+                                <div id="groupList" class="mt-6 space-y-3"></div>
+                            </div>
+
+                            <div id="groupChatPanel" class="glass hidden rounded-[30px] p-5 sm:p-6">
+                                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Active room</p>
+                                <h4 id="activeGroupName" class="section-title mt-1 text-3xl font-bold text-slate-900"></h4>
+                                <div id="groupChatWindow" class="soft-scroll mt-5 h-[360px] overflow-y-auto rounded-[28px] bg-white p-4 shadow-inner"></div>
+                                <div class="mt-5 flex gap-2">
+                                    <input id="groupMessageInput" type="text" class="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 outline-none transition focus:border-[var(--accent)] focus:ring-4 focus:ring-emerald-100" placeholder="Type message..." onkeypress="if(event.key==='Enter') App.sendGroupMessage()">
+                                    <button onclick="App.sendGroupMessage()" class="rounded-2xl bg-[linear-gradient(135deg,var(--accent),#19a08d)] px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-200 transition hover:-translate-y-0.5">
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="view-user" class="view-section">
+                        <div class="glass rounded-[30px] p-5 sm:p-6">
+                            <div class="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
+                                <div class="rounded-[30px] bg-[linear-gradient(135deg,#0f766e,#19a08d)] p-6 text-white">
+                                    <p class="text-xs uppercase tracking-[0.3em] text-white/65">Profile</p>
+                                    <h3 id="profileName" class="section-title mt-3 text-4xl font-bold">User</h3>
+                                    <p class="mt-4 max-w-md text-sm leading-7 text-white/80">
+                                        Your profile anchors your reports, support group membership, and AI-guided symptom history across CureConnect.
+                                    </p>
+                                </div>
+                                <div class="grid gap-4">
+                                    <div class="rounded-3xl bg-white p-5 shadow-sm">
+                                        <div class="text-sm font-semibold text-slate-900">Your workspace</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Use the tabs to move between monitoring, chat, doctors, groups, and your profile.</p>
+                                    </div>
+                                    <div class="rounded-3xl bg-[var(--bg-soft)] p-5 shadow-sm">
+                                        <div class="text-sm font-semibold text-slate-900">Session note</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Authentication is stored in session so the dashboard can reconnect after refresh.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 rounded-[30px] border border-[rgba(18,124,113,0.08)] bg-white p-6 shadow-sm">
+                                <div class="medical-badge">About CureConnect</div>
+                                <h4 class="section-title mt-4 text-3xl font-bold text-slate-900">A connected clinical companion for faster care decisions</h4>
+                                <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-500">CureConnect brings together symptom guidance, local health visibility, doctor discovery, voice-first assistance, and peer support in one calm healthcare workspace.</p>
+                                <div class="about-grid mt-6">
+                                    <article class="rounded-[24px] bg-[var(--bg-soft)] p-5">
+                                        <div class="text-sm font-semibold text-slate-900">AI Symptom Checker</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Analyze symptoms quickly and get specialist guidance for the next step.</p>
+                                    </article>
+                                    <article class="rounded-[24px] bg-[var(--bg-soft)] p-5">
+                                        <div class="text-sm font-semibold text-slate-900">Community Health Monitoring</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Watch city-level reporting trends and risk shifts in a single dashboard view.</p>
+                                    </article>
+                                    <article class="rounded-[24px] bg-[var(--bg-soft)] p-5">
+                                        <div class="text-sm font-semibold text-slate-900">Doctor Discovery System</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Browse specialists by discipline, rating, fee, and Chennai location.</p>
+                                    </article>
+                                    <article class="rounded-[24px] bg-[var(--bg-soft)] p-5">
+                                        <div class="text-sm font-semibold text-slate-900">Voice-enabled Chat</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Speak symptoms naturally and move from conversation to care guidance faster.</p>
+                                    </article>
+                                    <article class="rounded-[24px] bg-[var(--bg-soft)] p-5">
+                                        <div class="text-sm font-semibold text-slate-900">Support Groups</div>
+                                        <p class="mt-2 text-sm leading-6 text-slate-500">Stay connected with moderated community spaces for shared recovery journeys.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <nav class="glass fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-2xl -translate-x-1/2 items-center justify-between rounded-[28px] p-2 lg:hidden">
+            <button id="tab-home-mobile" class="active-tab nav-pill flex-1 rounded-2xl px-3 py-3 text-sm font-semibold text-slate-700" onclick="switchTab('home')">Home</button>
+            <button id="tab-chat-mobile" class="nav-pill flex-1 rounded-2xl px-3 py-3 text-sm font-semibold text-slate-700" onclick="switchTab('chat')">Chat</button>
+            <button id="tab-doctors-mobile" class="nav-pill flex-1 rounded-2xl px-3 py-3 text-sm font-semibold text-slate-700" onclick="switchTab('doctors')">Doctors</button>
+            <button id="tab-groups-mobile" class="nav-pill flex-1 rounded-2xl px-3 py-3 text-sm font-semibold text-slate-700" onclick="switchTab('groups')">Groups</button>
+            <button id="tab-user-mobile" class="nav-pill flex-1 rounded-2xl px-3 py-3 text-sm font-semibold text-slate-700" onclick="switchTab('user')">Profile</button>
+        </nav>
+    </div>
+
+    <div id="doctorDetailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center px-4 py-6" onclick="if(event.target===this) closeDoctorModal()">
+        <div class="absolute inset-0 bg-slate-950/55 backdrop-blur-md"></div>
+        <div class="doctor-modal-shell relative w-full max-w-4xl rounded-[32px] border border-white/10 p-6 text-white sm:p-8">
+            <button type="button" onclick="closeDoctorModal()" class="absolute right-4 top-4 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20">
+                Close
+            </button>
+            <div id="doctorModalContent"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
